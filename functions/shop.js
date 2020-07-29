@@ -23,7 +23,8 @@ exports.handler = (event, context, callback) => {
     catch(err) {
         callback(null, {
             statusCode: 200,
-            body: "error"
+            headers: {"Access-Control-Allow-Origin":"*"},
+            body: err
         });
     }
 };
