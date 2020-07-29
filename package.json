@@ -1,0 +1,15 @@
+{
+  "name": "grynn",
+  "version": "1.0.0",
+  "description": "grynn shopping kart middleware by Vinayak Patel.",
+  "main": "index.js",
+  "scripts": {
+    "start": "netlify-lambda serve functions",
+    "build": "netlify-lambda build functions"
+  },
+  "author": "Vinayak Patel",
+  "license": "ISC",
+  "devDependencies": {
+    "netlify-lambda": "^2.0.1"
+  }
+}
