@@ -1,1 +1,29 @@
-!function(e,r){for(var t in r)e[t]=r[t]}(exports,function(e){var r={};function t(n){if(r[n])return r[n].exports;var o=r[n]={i:n,l:!1,exports:{}};return e[n].call(o.exports,o,o.exports,t),o.l=!0,o.exports}return t.m=e,t.c=r,t.d=function(e,r,n){t.o(e,r)||Object.defineProperty(e,r,{enumerable:!0,get:n})},t.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},t.t=function(e,r){if(1&r&&(e=t(e)),8&r)return e;if(4&r&&"object"==typeof e&&e&&e.__esModule)return e;var n=Object.create(null);if(t.r(n),Object.defineProperty(n,"default",{enumerable:!0,value:e}),2&r&&"string"!=typeof e)for(var o in e)t.d(n,o,function(r){return e[r]}.bind(null,o));return n},t.n=function(e){var r=e&&e.__esModule?function(){return e.default}:function(){return e};return t.d(r,"a",r),r},t.o=function(e,r){return Object.prototype.hasOwnProperty.call(e,r)},t.p="",t(t.s=2)}([function(e,r){e.exports=require("querystring")},,function(e,r,t){"use strict";t.r(r);t(0);exports.handler=(e,r,t)=>{try{t(null,{statusCode:200,headers:{"Access-Control-Allow-Origin":"*"},body:e.queryStringParameters.name||"World"})}catch(e){t(null,{statusCode:200,body:"error"})}}}]));
+import querystring from "querystring";
+
+exports.handler = (event, context, callback) => {
+    try {
+        // Only allow POST
+        //if (event.httpMethod !== "POST") {
+            //return { statusCode: 200, body: "Method Not Allowed" };
+        //}
+
+        // When the method is POST, the name will no longer be in the event’s
+        // queryStringParameters – it’ll be in the event body encoded as a query string
+        //const params = querystring.parse(event.body);
+        //const name = params.name || "World";
+        //var obj = JSON.parse(event.body);
+        const name = event.queryStringParameters.name || "World";
+        //const head = {"Access-Control-Allow-Origin":"*"};
+        callback(null, {
+            statusCode: 200,
+            headers: {"Access-Control-Allow-Origin":"*"},
+            body: name
+        });
+    }
+    catch(err) {
+        callback(null, {
+            statusCode: 200,
+            body: "error"
+        });
+    }
+};
