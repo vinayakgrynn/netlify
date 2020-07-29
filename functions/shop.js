@@ -11,13 +11,13 @@ exports.handler = (event, context, callback) => {
         // queryStringParameters – it’ll be in the event body encoded as a query string
         //const params = querystring.parse(event.body);
         //const name = params.name || "World";
-        //var obj = JSON.parse(event.body);
-        const name = event.queryStringParameters.name || "World";
+        var obj = JSON.parse(event.body);
+        //const name = event.queryStringParameters.name || "World";
         //const head = {"Access-Control-Allow-Origin":"*"};
         callback(null, {
             statusCode: 200,
             headers: {"Access-Control-Allow-Origin":"*"},
-            body: name
+            body: obj
         });
     }
     catch(err) {
